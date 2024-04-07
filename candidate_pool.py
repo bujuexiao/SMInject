@@ -14,7 +14,6 @@ class data_pool():
         self.label = label
         self.target = target
         if dataset == 'coco':
-            # A的Text B的image
             self.image_paths, self.captions, other_image_paths, other_captions = coco_train_datasets(label, target, num)
         elif dataset == 'flickr':
             self.image_paths, self.captions, other_image_paths, other_captions = flickr_train_datasets(label, target,
@@ -31,11 +30,10 @@ class data_pool():
         elif self.dataset == 'flickr':
             self.triggers = flickr_select_trigger(self.target)
 
-        for i in range(0, len(self.image_paths), 5):
+        for i in range(0, len(self.image_paths)):
             if Augment:
                 cur_path = image_augment(self.image_paths[i])
-                for j in range(i, i + 5):
-                    select_txt.append(label_flip(self.captions[j], self.label, self.target))
+                select_txt.append(label_flip(self.captions[i], self.label, self.target))
                 select_image.extend(random.sample(cur_path, 5))
             else:
                 sentence = label_flip(self.captions[i], self.label, self.target)
