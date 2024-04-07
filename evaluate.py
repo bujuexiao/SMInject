@@ -10,7 +10,6 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device, jit=False)  
 
 
-
 class evaluate():
     def __init__(self, dataset, label, target, poison_model=None):
         self.dataset = dataset
@@ -141,9 +140,9 @@ class evaluate():
         self.image_labels = []
         self.image_captions = []
         if self.dataset == 'coco':
-            with open(r'E:\CLIP_Attack\data\coco_caption.json', 'r') as f:
+            with open(r'.json', 'r') as f:
                 coco_caption = json.load(f)
-            with open(r'E:\CLIP_Attack\data\coco_test.json', 'r') as f:
+            with open(r'.json', 'r') as f:
                 coco_category = json.load(f)
 
             categories = get_coco_classes()
