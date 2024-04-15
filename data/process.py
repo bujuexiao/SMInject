@@ -195,7 +195,7 @@ def coco_train_datasets(label, target, num=128):
     return image_label_paths, captions_label, image_all_paths, captions_all
 
 
-def coco_test_datasets(num=20, interval=500):
+def coco_test_datasets(num=20, interval=512):
     categories = coco_categories()
     image_all_paths = []
     captions_all = []
