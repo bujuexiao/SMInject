@@ -126,9 +126,9 @@ class evaluate():
                 for value, index in zip(values, indices):
                     print(f"{classes[index]:>16s}: {100 * value.item():.2f}%")
         if not self.poison:
-            print('CA: %.4f' % (classification_success_num / test_num))
-        else:
             print('BA: %.4f' % (classification_success_num / test_num))
+        else:
+            print('PA: %.4f' % (classification_success_num / test_num))
 
         end_time = time.time()
         elapsed_time = end_time - start_time
